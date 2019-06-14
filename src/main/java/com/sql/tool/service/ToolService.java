@@ -34,7 +34,7 @@ public class ToolService {
         String reportid=null;
         String reportsql=null;
         Map<String,String> filenames =new HashMap<String,String>();
-        Map<String, String> keymap=config.getKeyMap();
+        Map<String, String> keymap=config.getKeymap();
         String sqlfile[] = sqlfiles.split(",");
         filenames=getsqlfilename();
         String sqlid=null;
