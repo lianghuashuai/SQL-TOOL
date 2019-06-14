@@ -1,0 +1,60 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>CSRC-TOOL</title>
+</head>
+<body>
+<br>
+<form action="sqlupdate" method="GET">
+
+            <table border="0" width="300px" align="center">
+                <tr>
+                    <td><input type="checkbox" onclick="swapCheck()" /></td>
+                    <td>SQL</td>
+                </tr>
+
+                <tr th:each="sqlname : ${list}">
+                    <td><input type="checkbox" NAME="sqlfiles" th:value="${sqlname}"></td>
+                    <td th:text="${sqlname}"></td>
+                </tr>
+
+                <tr>
+                    <td><input type="reset" value="重置"></td>
+                    <td><input type="submit" value="更新"></td>
+                </tr>
+            </table>
+
+</form>
+
+</body>
+<style type="text/css">
+    td
+    {
+        white-space: nowrap;
+    }
+</style>
+<script type="text/javascript"
+        src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    //checkbox 全选/取消全选
+    var isCheckAll = false;
+    function swapCheck() {
+        if (isCheckAll) {
+            $("input[type='checkbox']").each(function() {
+                this.checked = false;
+            });
+            isCheckAll = false;
+        } else {
+            $("input[type='checkbox']").each(function() {
+                this.checked = true;
+            });
+            isCheckAll = true;
+        }
+    }
+
+
+
+</script>
+</html>
