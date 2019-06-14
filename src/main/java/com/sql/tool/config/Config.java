@@ -14,5 +14,4 @@ import java.util.Map;
 @Data
 public class Config {
     private Map<String, String> keymap = new HashMap<>();
-
 }
