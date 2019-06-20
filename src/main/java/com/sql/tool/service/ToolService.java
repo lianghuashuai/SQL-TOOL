@@ -30,7 +30,6 @@ public class ToolService {
      */
     public List<String> updatesqlservice(String sqlfiles){
         List<String> result=new ArrayList<String>();
-        String temp=null;
         String reportid=null;
         String reportsql=null;
         Map<String,String> filenames =new HashMap<String,String>();
@@ -44,9 +43,13 @@ public class ToolService {
                 for (int i = 0; i < sqlfile.length; i++) {
                     try {
                     reportsql = readSqlFile(filenames.get(sqlfile[i]));
-                    sqlid=sqlfile[i].substring(0,index);
-                    temp=sqlfile[i].substring(0,2);
-                    reportid=keymap.get(temp);
+                  //  sqlid=sqlfile[i].substring(0,index);
+                    for(String keyid:keymap.keySet()){
+                         if(sqlfile[i].indexOf(keyid)!=-1){
+                             sqlid = keyid;
+                         }
+                    }
+                    reportid=keymap.get(sqlid);
                     if(reportid!=null&&reportid.length()>0) {
                         toolMapper.updatesql(reportsql, reportid);
                     }
